@@ -85,9 +85,15 @@ public class Datastore {
   /** Returns the total number of messages for all users. */
   public int getTotalMessageCount(){
     Query query = new Query("Message");
+<<<<<<< HEAD
     int maxNumberOfMessagesPerQuery = 1000;
     PreparedQuery results = datastore.prepare(query);
     return results.countEntities(FetchOptions.Builder.withLimit(maxNumberOfMessagesPerQuery));
+=======
+    int entityLimit = 1000;
+    PreparedQuery results = datastore.prepare(query);
+    return results.countEntities(FetchOptions.Builder.withLimit(entityLimit));
+>>>>>>> e09a2e47290427bfabe085064f23d25c19df165d
   }
   
   /** Stores the User in Datastore. */
