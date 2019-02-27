@@ -83,6 +83,27 @@ public class Datastore {
 
     return messages;
   }
+  public List<Message> getAllMessages(){
+    List<Message> messages = new ArrayList<>();
+
+    Query query = new Query("Message")
+      .addSort("timestamp", SortDirection.DESCENDING);
+    PreparedQuery results = datastore.prepare(query);
+
+    for (Entity entity : results.asIterable()) {
+      try {
+        String idString = entity.getKey().getName();
+        UUID id = UUID.fromString(idString);
+        String user = (String) entity.getProperty("user");
+        List<Message> userMessages = getMessages(user); //get all messages from specific user
+        int uMSize = userMessages.size(); 
+        for (int i = 0; i < uMSize; i++) { //add each message from specific user to list of all messages
+          Message message = userMessages.get(i);
+          messages.add(userMessages);
+        }  
+      }
+    }
+  }
   
   /** Returns the total number of messages for all users. */
   public int getTotalMessageCount(){
