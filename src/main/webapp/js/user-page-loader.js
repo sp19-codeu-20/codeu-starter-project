@@ -40,8 +40,8 @@ function showMessageFormIfLoggedIn() {
       .then((loginStatus) => {
         if (loginStatus.isLoggedIn) {
           if (loginStatus.username == parameterUsername){
-            const AboutMeClassList = document.getElementById('about-me-form').classList;
-            AboutMeClassList.remove('hidden');
+            const aboutMeElement = document.getElementById('about-me-form');
+            aboutMeElement.classList.remove('hidden');
           }
           const messageForm = document.getElementById('message-form');
           messageForm.action = '/messages?recipient=' + parameterUsername;
