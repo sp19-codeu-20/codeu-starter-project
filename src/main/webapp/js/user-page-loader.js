@@ -39,6 +39,10 @@ function showMessageFormIfLoggedIn() {
       })
       .then((loginStatus) => {
         if (loginStatus.isLoggedIn) {
+          if (loginStatus.username == parameterUsername){
+            const aboutMeElement = document.getElementById('about-me-form');
+            aboutMeElement.classList.remove('hidden');
+          }
           const messageForm = document.getElementById('message-form');
           messageForm.action = '/messages?recipient=' + parameterUsername;
           messageForm.classList.remove('hidden');
@@ -90,9 +94,25 @@ function buildMessageDiv(message) {
   return messageDiv;
 }
 
+function fetchAboutMe(){
+  const url = '/about?user=' + parameterUsername;
+  fetch(url).then((response) => {
+    return response.text();
+  }).then((aboutMe) => {
+    const aboutMeContainer = document.getElementById('about-me-container');
+    if(aboutMe == ''){
+      aboutMe = 'This user has not entered any information yet.';
+    }
+    
+    aboutMeContainer.innerHTML = aboutMe;
+
+  });
+}
+
 /** Fetches data and populates the UI of the page. */
 function buildUI() {
   setPageTitle();
+  fetchAboutMe();
   showMessageFormIfLoggedIn();
   fetchMessages();
 }
