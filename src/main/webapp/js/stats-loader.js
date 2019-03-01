@@ -6,7 +6,6 @@ function fetchStats(){
     }).then((stats) => {
     const statsContainer = document.getElementById('stats-container');
     statsContainer.innerHTML = '';
-
     const messageCountElement = buildStatElement('Message count: ' + stats.messageCount);
     statsContainer.appendChild(messageCountElement);
     });
