@@ -62,16 +62,42 @@ public class Datastore {
             .setFilter(new Query.FilterPredicate("recipient", FilterOperator.EQUAL, recipient))
             .addSort("timestamp", SortDirection.DESCENDING);
     PreparedQuery results = datastore.prepare(query);
+    messages = message(user);
+    }
 
+    return messages;
+  }
+  public List<Message> getAllMessages(){
+    List<Message> messages = new ArrayList<>();
+   
+    Query query = new Query("Message")
+      .addSort("timestamp", SortDirection.DESCENDING);
+    PreparedQuery results = datastore.prepare(query);
+
+    for (Entity entity : results.asIterable()) {
+      try {
+        List<Message> userMessages = message(user); //get all messages from specific user
+        int uMSize = userMessages.size(); 
+        for (int i = 0; i < uMSize; i++) { //add each message from specific user to list of all messages
+          Message message = userMessages.get(i);
+          messages.add(userMessages);
+        }  
+      } catch (Exception e) {
+        System.err.println("Error getting messages.");
+        System.err.println(entity.toString());
+        e.printStackTrace();
+      }
+    }
+  }
+  public List<Message> message(String user) {
+    List<Message> messages = new ArrayList<>();
     for (Entity entity : results.asIterable()) {
       try {
         String idString = entity.getKey().getName();
         UUID id = UUID.fromString(idString);
         String user = (String) entity.getProperty("user");
-
         String text = (String) entity.getProperty("text");
         long timestamp = (long) entity.getProperty("timestamp");
-
         Message message = new Message(id, user, text, timestamp, recipient);
         messages.add(message);
       } catch (Exception e) {
@@ -80,31 +106,8 @@ public class Datastore {
         e.printStackTrace();
       }
     }
-
     return messages;
-  }
-  public List<Message> getAllMessages(){
-    List<Message> messages = new ArrayList<>();
-
-    Query query = new Query("Message")
-      .addSort("timestamp", SortDirection.DESCENDING);
-    PreparedQuery results = datastore.prepare(query);
-
-    for (Entity entity : results.asIterable()) {
-      try {
-        String idString = entity.getKey().getName();
-        UUID id = UUID.fromString(idString);
-        String user = (String) entity.getProperty("user");
-        List<Message> userMessages = getMessages(user); //get all messages from specific user
-        int uMSize = userMessages.size(); 
-        for (int i = 0; i < uMSize; i++) { //add each message from specific user to list of all messages
-          Message message = userMessages.get(i);
-          messages.add(userMessages);
-        }  
-      }
-    }
-  }
-  
+  }   
   /** Returns the total number of messages for all users. */
   public int getTotalMessageCount(){
     Query query = new Query("Message");
