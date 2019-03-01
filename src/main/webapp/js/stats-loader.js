@@ -4,10 +4,10 @@ function fetchStats(){
     fetch(url).then((response) => {
     return response.json();
     }).then((stats) => {
-    const statsContainer = document.getElementById('stats-container');
-    statsContainer.innerHTML = '';
-    const messageCountElement = buildStatElement('Message count: ' + stats.messageCount);
-    statsContainer.appendChild(messageCountElement);
+        const statsContainer = document.getElementById('stats-container');
+        statsContainer.innerHTML = '';
+        const messageCountElement = buildStatElement('Message count: ' + stats.messageCount);
+        statsContainer.appendChild(messageCountElement);
     });
 }
 
