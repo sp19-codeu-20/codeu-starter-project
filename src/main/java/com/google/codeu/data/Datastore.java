@@ -56,13 +56,11 @@ public class Datastore {
    */
   public List<Message> getMessages(String recipient) {
     List<Message> messages = new ArrayList<>();
-
     Query query =
         new Query("Message")
             .setFilter(new Query.FilterPredicate("recipient", FilterOperator.EQUAL, recipient))
             .addSort("timestamp", SortDirection.DESCENDING);
-    PreparedQuery results = datastore.prepare(query);
-    messages = message(user);
+    messages = message(query);
     }
 
     return messages;
@@ -72,16 +70,10 @@ public class Datastore {
    
     Query query = new Query("Message")
       .addSort("timestamp", SortDirection.DESCENDING);
-    PreparedQuery results = datastore.prepare(query);
 
     for (Entity entity : results.asIterable()) {
       try {
-        List<Message> userMessages = message(user); //get all messages from specific user
-        int uMSize = userMessages.size(); 
-        for (int i = 0; i < uMSize; i++) { //add each message from specific user to list of all messages
-          Message message = userMessages.get(i);
-          messages.add(userMessages);
-        }  
+        messages = message(query);  
       } catch (Exception e) {
         System.err.println("Error getting messages.");
         System.err.println(entity.toString());
@@ -89,7 +81,8 @@ public class Datastore {
       }
     }
   }
-  public List<Message> message(String user) {
+  public List<Message> message(Query query) {
+    PreparedQuery results = datastore.prepare(query);
     List<Message> messages = new ArrayList<>();
     for (Entity entity : results.asIterable()) {
       try {
