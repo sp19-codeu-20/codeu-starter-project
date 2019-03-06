@@ -61,8 +61,6 @@ public class Datastore {
             .setFilter(new Query.FilterPredicate("recipient", FilterOperator.EQUAL, recipient))
             .addSort("timestamp", SortDirection.DESCENDING);
     messages = message(query);
-    }
-
     return messages;
   }
   public List<Message> getAllMessages(){
@@ -72,14 +70,7 @@ public class Datastore {
       .addSort("timestamp", SortDirection.DESCENDING);
 
     for (Entity entity : results.asIterable()) {
-      try {
         messages = message(query);  
-      } catch (Exception e) {
-        System.err.println("Error getting messages.");
-        System.err.println(entity.toString());
-        e.printStackTrace();
-      }
-    }
   }
   public List<Message> message(Query query) {
     PreparedQuery results = datastore.prepare(query);
