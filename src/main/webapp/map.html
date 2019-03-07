@@ -3,8 +3,10 @@
 <head>
   <title>Map Project</title>
 
+  <!-- API key access -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDipc0Fcrm1Zt2d1Ig7xDylFNgpxiqF3s"></script>
 
+  <!-- renders map and adds marker -->
   <script>
     let map;
     function createMap(){
@@ -21,6 +23,7 @@
     }
   </script>
 
+  <!-- style -->
   <style>
     #map{
       width: 500px;
@@ -29,6 +32,7 @@
     }
   </style>
 </head>
+
 <body onload="createMap();">
   <h1>Map Project</h1>
   <div id="map"></div>
