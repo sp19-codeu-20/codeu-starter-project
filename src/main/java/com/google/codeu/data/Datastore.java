@@ -69,8 +69,8 @@ public class Datastore {
     Query query = new Query("Message")
       .addSort("timestamp", SortDirection.DESCENDING);
 
-    for (Entity entity : results.asIterable()) {
-        messages = message(query);  
+    messages = message(query);
+    return messages;
   }
   public List<Message> message(Query query) {
     PreparedQuery results = datastore.prepare(query);
@@ -81,6 +81,7 @@ public class Datastore {
         UUID id = UUID.fromString(idString);
         String user = (String) entity.getProperty("user");
         String text = (String) entity.getProperty("text");
+        String recipient = (String) entity.getProperty("recipient");
         long timestamp = (long) entity.getProperty("timestamp");
         Message message = new Message(id, user, text, timestamp, recipient);
         messages.add(message);
