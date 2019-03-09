@@ -7,8 +7,23 @@
     google.charts.load('current', {packages: ['corechart']}); //loads corecharts package
     google.charts.setOnLoadCallback(drawChart);
     function drawChart(){
-      //to be filled in later
-    }
+      var country_data = new google.visualization.DataTable();
+      //define columns for the DataTable instance
+      country_data.addColumn('string', 'Country Name');
+      country_data.addColumn('number', 'Visits');
+            
+      //add data to book_data
+      country_data.addRows([
+        ["Italy", 6],
+        ["Australia", 10],
+        ["China", 7],
+        ["Peru", 4],
+        ["Turkey", 8]
+      ]);
+      
+      var chart = new google.visualization.BarChart(document.getElementById('country_chart'));
+      chart.draw(country_data);
+ }
     </script>
   </head>
   <body>
