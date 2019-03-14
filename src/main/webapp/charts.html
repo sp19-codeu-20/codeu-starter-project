@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Country Visits Chart</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    google.charts.load('current', {packages: ['corechart']}); //loads corecharts package
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart(){
+      var country_data = new google.visualization.DataTable();
+      //define columns for the DataTable instance
+      country_data.addColumn('string', 'Country Name');
+      country_data.addColumn('number', 'Visits');
+            
+      //add data to country_data
+      country_data.addRows([
+        ["Italy", 6],
+        ["Australia", 10],
+        ["China", 7],
+        ["Peru", 4],
+        ["Turkey", 8]
+      ]);
+      //creates chart
+      var chart = new google.visualization.BarChart(document.getElementById('country_chart'));
+      chart.draw(country_data);
+ }
+    </script>
+  </head>
+  <body>
+    <h1>Chart Project</h1>
+  </body>
+</html>
