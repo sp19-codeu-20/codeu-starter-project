@@ -39,14 +39,38 @@ function showMessageFormIfLoggedIn() {
       })
       .then((loginStatus) => {
         if (loginStatus.isLoggedIn) {
-          if (loginStatus.username == parameterUsername){
-            const aboutMeElement = document.getElementById('about-me-form');
-            aboutMeElement.classList.remove('hidden');
-          }
           const messageForm = document.getElementById('message-form');
           messageForm.action = '/messages?recipient=' + parameterUsername;
           messageForm.classList.remove('hidden');
         }
+      });
+}
+
+/**
+ * Shows the message form if the user is logged in and viewing their own page.
+ */
+function showMessageFormIfViewingSelf() {
+  fetch('/login-status')
+      .then((response) => {
+        return response.json();
+      })
+      .then((loginStatus) => {
+        if (loginStatus.isLoggedIn &&
+            loginStatus.username == parameterUsername) {
+          fetchImageUploadUrlAndShowForm();
+        }
+      });
+}
+
+function fetchImageUploadUrlAndShowForm() {
+  fetch('/image-upload-url')
+      .then((response) => {
+        return response.text();
+      })
+      .then((imageUploadUrl) => {
+        const messageForm = document.getElementById('message-form');
+        messageForm.action = imageUploadUrl;
+        messageForm.classList.remove('hidden');
       });
 }
 
@@ -114,5 +138,6 @@ function buildUI() {
   setPageTitle();
   fetchAboutMe();
   showMessageFormIfLoggedIn();
+  showMessageFormIfViewingSelf();
   fetchMessages();
 }
