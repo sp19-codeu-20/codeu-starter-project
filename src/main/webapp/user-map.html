@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Map</title>
+
+  <!-- API key access -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDipc0Fcrm1Zt2d1Ig7xDylFNgpxiqF3s"></script>
+  
+  <!-- renders map and adds marker wherever clicked -->
+  <script src="/js/user-map-loader.js"></script>
+
+  <style>
+    #map{
+      width: 500px;
+      height: 500px;
+    }
+  </style>
+</head>
+
+<body onload="createMap();">
+ <h1>User Map</h1>
+ <div id="map"></div>
+</body>
+</html>
