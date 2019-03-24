@@ -21,16 +21,10 @@
 	width: 100%;
 }
 
-.about-me-form {
-  background: white;
-	text-align: center;
-	width: 100%;
-}
-
 .about-me-input {
   border: none;
-  height: 100px;
-  width: 99%;
+  height: 110px;
+  width: 99.4%;
 }
 
 /* For submit Buttons */
@@ -100,7 +94,7 @@
 .message-input {
   border: none;
   height: 100px;
-  width: 90%;
+  width: 99.4%;
 }
 
 
