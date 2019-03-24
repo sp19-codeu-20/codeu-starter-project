@@ -76,10 +76,13 @@ background-color: #f1f1f1
   background-color: #3e8e41;
 }
 
-@font-face {
+/*@font-face {
   font-family: 'Product Sans';
-  src: url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
-}
+  src: local('Open Sans'), 
+  local('OpenSans'), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+  font-style: normal;
+  font-weight: 400;
+}*/
 
 h1 { 
 	background: white; 
