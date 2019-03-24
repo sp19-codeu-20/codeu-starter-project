@@ -15,19 +15,19 @@
  */
 
 
-#about-me-container {
+.about-me-container {
   background: white;
 	text-align: center;
 	width: 100%;
 }
 
-#about-me-form {
+.about-me-form {
   background: white;
 	text-align: center;
 	width: 100%;
 }
 
-#about-me-input {
+.about-me-input {
   border: white;
   height: 100px;
   width: 99%;
@@ -55,7 +55,7 @@
   font-weight: 400;
 }
 
-#message-form {
+.message-form {
 	background: white;
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 	margin-top: 20px;
@@ -71,7 +71,6 @@
   color: black;
   margin: 5px;
   min-width: 160px;
-  position: center;
 	z-index: 1;
 
 }
@@ -99,7 +98,7 @@
 
 /* Set the size of the message input to be 100 pixels high
    and will fill the width of its parent element. */
-#message-input {
+.message-input {
   border: white;
   height: 100px;
   width: 99%;

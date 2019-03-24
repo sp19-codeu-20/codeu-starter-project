@@ -36,19 +36,19 @@ limitations under the License.
     </nav>
     
     <h1 id="page-title">User Page</h1>
-    <div id="about-me-container">Loading...</div>
-  <div id="about-me-form" class="hidden">
+    <div class="about-me-container" id="about-me-container">Loading...</div>
+  <div class="about-me-form" id="about-me-form" class="hidden">
   <form action="/about" method="POST">
-    <textarea id= "about-me-input" name="about-me" placeholder="Say something about yourself..." rows=1 required></textarea>
+    <textarea class= "about-me-input" id= "about-me-input" name="about-me" placeholder="Say something about yourself..." rows=1 required></textarea>
     <br/>
     <input type="submit" value="Submit" class = "block">
   </form>
 </div>
 
-    <form id="message-form" action="/messages" method="POST" class="hidden">
+    <form class="message-form" id="message-form" action="/messages" method="POST" class="hidden">
       Enter a new message:
       <br/>
-      <textarea name="text" id="message-input" placeholder="Say something to the world..."></textarea>
+      <textarea name="text" class="message-input" id="message-input" placeholder="Say something to the world..."></textarea>
       <br/>
       <input type="submit" value="Submit" class = "block">
     </form>
