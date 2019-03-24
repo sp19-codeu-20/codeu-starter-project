@@ -15,13 +15,6 @@
  */
 
 /* Prevent the page from becoming too wide. */
-@font-face {
-  font-family: 'Product Sans';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
-}
-
 body {
 	background: #5433FF;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #A5FECB, #20BDFF, #5433FF);  /* Chrome 10-25, Safari 5.1-6 */
@@ -34,37 +27,6 @@ body {
   max-width: 600px;
   width: 50%;
 
-}
-
-p { 
-	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-	background: white; 
-	min-width: 160px;
-	text-align: center;
-	z-index: 1;
-}
-
-title { 
-	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-	background: white; 
-	min-width: 160px;
-	text-align: center;
-	z-index: 1;
-}
-
-h1 { 
-	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-	background: white; 
-	min-width: 160px;
-	text-align: center;
-	z-index: 1;
-}
-
-/* Remove bullet points from navigation bar. */
-nav ul {
-  color: white;
-  list-style-type: none;  
-  padding-left: 0;
 }
 
 /* Creation of dropdown menu. */
@@ -113,3 +75,44 @@ background-color: #f1f1f1
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
 }
+
+@font-face {
+  font-family: 'Product Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+}
+
+h1 { 
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+	background: white; 
+	min-width: 160px;
+	text-align: center;
+	z-index: 1;
+}
+
+/* Remove bullet points from navigation bar. */
+nav ul {
+  color: white;
+  list-style-type: none;  
+  padding-left: 0;
+}
+
+
+p { 
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+	background: white; 
+	min-width: 160px;
+	text-align: center;
+	z-index: 1;
+}
+
+title { 
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+	background: white; 
+	min-width: 160px;
+	text-align: center;
+	z-index: 1;
+}
+
+
