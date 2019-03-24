@@ -32,12 +32,13 @@
   height: 100px;
   width: 99%;
 }
+
 /* For submit Buttons */
 .block {
 	background-color: white;
 	border: none;
-	display: block;
 	cursor: pointer;
+	display: block;
 	font-family: 'Product Sans';
   font-size: 16px;
   font-style: normal;
@@ -80,7 +81,6 @@
   border-radius: 5px;
   display: block;
   margin-top: 25px;
-  max-width: 90%;
 }
 
 /* Give each message a rounded border. */
@@ -101,7 +101,7 @@
 .message-input {
   border: white;
   height: 100px;
-  width: 99%;
+  width: 90%;
 }
 
 

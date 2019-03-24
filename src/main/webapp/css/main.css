@@ -33,12 +33,12 @@ body {
 .dropbtn {
   background-color: #828c9b;
   border: none;
+  cursor: pointer;
 	color: white;
-	cursor: pointer;
   font-size: 16px;
 	right: 0;
+	padding: 16px;
   position: absolute;
-  padding: 16px;
 }
 
 .dropdown {
@@ -84,8 +84,8 @@ background-color: #f1f1f1
 }
 
 h1 { 
-	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 	background: white; 
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 	min-width: 160px;
 	text-align: center;
 	z-index: 1;
@@ -100,16 +100,16 @@ nav ul {
 
 
 p { 
-	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 	background: white; 
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);	
 	min-width: 160px;
 	text-align: center;
 	z-index: 1;
 }
 
 title { 
+	background: white;
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-	background: white; 
 	min-width: 160px;
 	text-align: center;
 	z-index: 1;
