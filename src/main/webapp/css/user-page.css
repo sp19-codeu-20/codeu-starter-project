@@ -28,7 +28,7 @@
 }
 
 .about-me-input {
-  border: white;
+  border: none;
   height: 100px;
   width: 99%;
 }
@@ -43,7 +43,7 @@
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  padding: 3px 3px;
+  padding: 0 3px;
   text-align: center;
   width: 100%;
 }
@@ -99,7 +99,7 @@
 /* Set the size of the message input to be 100 pixels high
    and will fill the width of its parent element. */
 .message-input {
-  border: white;
+  border: none;
   height: 100px;
   width: 90%;
 }

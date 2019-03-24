@@ -33,8 +33,8 @@ body {
 .dropbtn {
   background-color: #828c9b;
   border: none;
-  cursor: pointer;
-	color: white;
+ 	color: white;
+ 	cursor: pointer;	
   font-size: 16px;
 	right: 0;
 	padding: 16px;
