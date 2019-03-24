@@ -14,16 +14,45 @@
  * limitations under the License.
  */
 
+
+#about-me-container {
+  width: 100%;
+	background: white;
+	text-align: center;
+}
+
+#about-me-form {
+  width: 100%;
+	background: white;
+	text-align: center;
+}
+
+#message-form {
+	margin-top: 20px;
+	text-align: center;
+	background: white;
+  min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1; 
+}
+
 /* Set the size of the message input to be 100 pixels high
    and will fill the width of its parent element. */
 #message-input {
   height: 100px;
-  width: 100%;
+  border: white;
+  width: 99%;
+}
+
+#about-me-input {
+  height: 100px;
+  border: white;
+  width: 99%;
 }
 
 /* Give each message a rounded border. */
 .message-div {
-  border: thin solid black;
+  background: white;
   border-radius: 5px;
   margin-top: 20px;
 }
@@ -32,12 +61,12 @@
 .message-body img {
   display: block;
   margin-top: 25px;
-  max-width: 75%;
+  border-radius: 5px;
+  max-width: 90%;
 }
 
 /* Add a bottom border to the message header. */
 .message-header {
-  border-bottom: thin solid black;
   padding: 5px;
 }
 
@@ -45,6 +74,35 @@
    isn't too close to the border. */
 .message-body {
   margin: 5px;
+  color: black;
+  position: center;
+  min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+
+}
+
+/* For submit Buttons */
+.block {
+	font-family: 'Product Sans';
+  font-style: normal;
+  font-weight: 400;
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: white;
+  padding: 3px 3px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.block:hover {
+	font-family: 'Product Sans';
+  font-style: normal;
+  font-weight: 400;
+  background-color: #ddd;
+  color: black;
 }
 
 /* Use this to hide certain elements like forms if the

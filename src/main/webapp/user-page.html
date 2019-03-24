@@ -25,27 +25,32 @@ limitations under the License.
   </head>
   <body onload="buildUI();">
     <nav>
+    <div class="dropdown"style="float:right;">
+      <button class="dropbtn">Menu</button>
+      <div class="dropdown-content">
       <ul id="navigation">
         <li><a href="/">Home</a></li>
       </ul>
+      </div>
+    </div>
     </nav>
     
     <h1 id="page-title">User Page</h1>
     <div id="about-me-container">Loading...</div>
   <div id="about-me-form" class="hidden">
   <form action="/about" method="POST">
-    <textarea name="about-me" placeholder="about me" rows=4 required></textarea>
+    <textarea id= "about-me-input" name="about-me" placeholder="Say something about yourself..." rows=1 required></textarea>
     <br/>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" class = "block">
   </form>
 </div>
 
     <form id="message-form" action="/messages" method="POST" class="hidden">
       Enter a new message:
       <br/>
-      <textarea name="text" id="message-input"></textarea>
+      <textarea name="text" id="message-input" placeholder="Say something to the world..."></textarea>
       <br/>
-      <input type="submit" value="Submit">
+      <input type="submit" value="Submit" class = "block">
     </form>
     <hr/>
 

@@ -15,19 +15,101 @@
  */
 
 /* Prevent the page from becoming too wide. */
+@font-face {
+  font-family: 'Product Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+}
+
 body {
   max-width: 600px;
+  font-family: Product Sans;
+  color: #828c9b;
+  background: #5433FF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #A5FECB, #20BDFF, #5433FF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #A5FECB, #20BDFF, #5433FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+
+}
+
+p { 
+	text-align: center;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1; 
+	background: white;
+}
+
+title { 
+	text-align: center; 
+	background: white;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+
+h1 { 
+	text-align: center;
+	background: white; 
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
 }
 
 /* Remove bullet points from navigation bar. */
 nav ul {
   list-style-type: none;
+  color: white;
   padding-left: 0;
 }
 
-/* Keep navigation menu on one line. */
-nav li {
-  display: inline-block;
-  margin-right: 10px
+/* Creation of dropdown menu. */
+.dropbtn {
+  position: absolute;
+  right: 0;
+  background-color: #828c9b;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
 }
 
+.dropdown {
+  position: absolute;
+  right: 20px;
+  display: inline-block;
+}
+
+.dropdown-content {
+  position: relative;
+  display: none;
+  top: 32px;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
