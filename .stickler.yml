@@ -1,5 +1,6 @@
 linters:
-  csslint: {  }
+  csslint:
+    ignore: 'bulletproof-font-face'
 files:
   ignore:
     - 'bower_components/*'
