@@ -17,23 +17,25 @@
 
 .about-me-container {
   background: white;
-	text-align: center;
-	width: 100%;
+  text-align: center;
+  width: 100%;
 }
 
 .about-me-input {
   border: none;
   height: 110px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
   width: 99.4%;
 }
 
 /* For submit Buttons */
 .block {
-	background-color: white;
-	border: none;
-	cursor: pointer;
-	display: block;
-	font-family: 'Product Sans';
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  display: block;
+  font-family: 'Product Sans';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -42,15 +44,16 @@
 }
 
 .block:hover {
-	background-color: #ddd;
-	color: black;
-	font-family: 'Product Sans';
+  background-color: #ddd;
+  color: black;
+  font-family: 'Product Sans';
   font-style: normal;
   font-weight: 400;
 }
 
 .message-form {
 	background: white;
+	border: none;
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 	margin-top: 20px;
 	min-width: 160px;
@@ -65,7 +68,7 @@
   color: black;
   margin: 5px;
   min-width: 160px;
-	z-index: 1;
+  z-index: 1;
 
 }
 
@@ -74,6 +77,7 @@
   border-radius: 5px;
   display: block;
   margin-top: 25px;
+  width: 90%;
 }
 
 /* Give each message a rounded border. */
