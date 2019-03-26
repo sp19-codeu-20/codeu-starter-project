@@ -16,11 +16,11 @@
 
 /* Prevent the page from becoming too wide. */
 body {
-	background: #5433FF;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #A5FECB, #20BDFF, #5433FF);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #A5FECB, #20BDFF, #5433FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  color: #828c9b;
-	font-family: Product Sans;
+  background-attachment: fixed;
+  background-image: url("light_colors.png");
+  background-repeat: repeat;
+  color: #808080;
+  font-family: Product Sans;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -31,11 +31,10 @@ body {
 /* Creation of dropdown menu. */
 .dropbtn {
   background-color: #828c9b;
-  border: none;
- 	color: white;
- 	cursor: pointer;	
+  color: white;
+  cursor: pointer;	
   font-size: 16px;
-	padding: 16px;
+  padding: 16px;
   position: absolute;
   right: 0;
 }
@@ -47,9 +46,9 @@ body {
 }
 
 .dropdown-content {
-	background-color: #f9f9f9;
-	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-	display: none;
+  background-color: #f9f9f9;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  display: none;
   min-width: 160px;
   position: relative;
   top: 32px;
@@ -77,16 +76,16 @@ background-color: #f1f1f1
 
 @font-face {
   font-family: 'Product Sans';
-  src: local('Open Sans'), 
-  local('OpenSans'), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
   font-style: normal;
   font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
 }
 
 h1 { 
 	background: white; 
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 	min-width: 160px;
+	border:thick white rounded;
 	text-align: center;
 	z-index: 1;
 }
@@ -103,6 +102,7 @@ p {
 	background: white; 
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);	
 	min-width: 160px;
+	border:thick white rounded;
 	text-align: center;
 	z-index: 1;
 }
@@ -111,6 +111,7 @@ title {
 	background: white;
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 	min-width: 160px;
+	border:thick white rounded;
 	text-align: center;
 	z-index: 1;
 }
