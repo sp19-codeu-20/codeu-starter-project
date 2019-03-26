@@ -85,7 +85,6 @@ h1 {
 	background: white; 
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 	min-width: 160px;
-	border:thick white rounded;
 	text-align: center;
 	z-index: 1;
 }
@@ -102,7 +101,6 @@ p {
 	background: white; 
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);	
 	min-width: 160px;
-	border:thick white rounded;
 	text-align: center;
 	z-index: 1;
 }
@@ -111,7 +109,6 @@ title {
 	background: white;
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 	min-width: 160px;
-	border:thick white rounded;
 	text-align: center;
 	z-index: 1;
 }
