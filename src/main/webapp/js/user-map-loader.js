@@ -13,6 +13,9 @@ function createMap(){
     //adds marker wherever user clicks
     createMarkerForEdit(event.latLng.lat(), event.latLng.lng());
   });
+
+  //gets markers from datastore
+  fetchMarkers();
 }
 
 //creates marker at given lat and lng coordinates with 
@@ -71,6 +74,7 @@ function buildInfoWindowInput(lat, lng){
 
   //saves info submitted from user
   button.onclick = () => {
+    postMarker(lat, lng, textBox.value);
     createMarkerForDisplay(lat, lng, textBox.value);
     editMarker.setMap(null);
   };
@@ -82,4 +86,28 @@ function buildInfoWindowInput(lat, lng){
   containerDiv.appendChild(button);
      
   return containerDiv;
+}
+
+//gets user's markers from the datastore and displays them
+function fetchMarkers(){
+  fetch('/user-markers').then((response) => {
+    return response.json();
+  }).then((markers) => {
+    markers.forEach((marker) => {
+      createMarkerForDisplay(marker.lat, marker.lng, marker.content)
+    });  
+  });
+}
+
+//sends info for user's marker to server
+function postMarker(lat, lng, content){
+  const params = new URLSearchParams();
+  params.append('lat', lat);
+  params.append('lng', lng);
+  params.append('content', content);
+
+  fetch('/user-markers', {
+    method: 'POST',
+    body: params
+  });
 }
