@@ -97,21 +97,20 @@ public class MessageServlet extends HttpServlet {
     List<BlobKey> blobKeys = blobs.get("image");
     Message message = new Message(user, textWithImagesReplaced, recipient,"");
     
-    if(blobKeys != null && !blobKeys.isEmpty()) {
+    if (blobKeys != null && !blobKeys.isEmpty()) {
       BlobKey blobKey = blobKeys.get(0);
       ImagesService imagesService = ImagesServiceFactory.getImagesService();
       ServingUrlOptions options = ServingUrlOptions.Builder.withBlobKey(blobKey);
       try {
         String imageUrl = imagesService.getServingUrl(options);
         message.setImageUrl(imageUrl);
-      } 
-      catch (ImagesServiceFailureException imageUrlc) {
-    	  
+      } catch (ImagesServiceFailureException imageUrlc) {
+        ;  
       }
     }
 
     datastore.storeMessage(message);
     response.sendRedirect("/user-page.html?user=" + user);
     }
-}
+  }
 
