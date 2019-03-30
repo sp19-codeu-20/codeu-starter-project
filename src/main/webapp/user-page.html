@@ -45,12 +45,16 @@ limitations under the License.
   </form>
 </div>
 
-    <form class="message-form" id="message-form" action="/messages" method="POST" class="hidden">
+    <form class="message-form" id="message-form" action="/messages" method="POST" class="hidden" enctype="multipart/form-data">
       Enter a new message:
       <br/>
       <textarea name="text" class="message-input" id="message-input" placeholder="Say something to the world..."></textarea>
       <br/>
-      <input type="submit" value="Submit" class = "block">
+        Add an image to your message:
+	  <input type="file" name="image">
+	  <br/>
+	  <input type="hidden" value="" name="recipient" id="recipientInput">
+      <input type="submit" value="Submit">
     </form>
     <hr/>
 
