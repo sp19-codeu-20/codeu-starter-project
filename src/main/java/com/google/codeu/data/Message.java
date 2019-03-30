@@ -37,7 +37,7 @@ public class Message {
   }
   
   /**
-   * Message Parameters
+   * Message Parameters.
    */
   public Message(UUID id, String user, String text, long timestamp, String recipient, String imageUrl) {
     this.id = id;
