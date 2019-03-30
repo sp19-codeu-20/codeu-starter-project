@@ -66,10 +66,10 @@ public class Message {
   }
   
   public String getImageUrl() {
-	return imageUrl;
+    return imageUrl;
   }
   
-  public void setImageUrl(String url){
-	this.imageUrl = url;
+  public void setImageUrl(String url) {
+    this.imageUrl = url;
   }
 }

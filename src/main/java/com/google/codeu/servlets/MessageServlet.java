@@ -79,42 +79,39 @@ public class MessageServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
     UserService userService = UserServiceFactory.getUserService();
-	if (!userService.isUserLoggedIn()) {
-	  response.sendRedirect("/index.html");
-	  return;
-	}
+    if (!userService.isUserLoggedIn()) {
+      response.sendRedirect("/index.html");
+      return;
+    }
 
-	String user = userService.getCurrentUser().getEmail();
-	String recipient = request.getParameter("recipient");
-	String userText = Jsoup.clean(request.getParameter("text"), Whitelist.none());
-	//cleaning up user text, searching for any image URLs
-	String regex = "(https?://\\S+\\.(png|jpg))";
-	String replacement = "<img src=\"$1\" />";
-	//replacing images with code that can be displayed on the page 
-	String textWithImagesReplaced = userText.replaceAll(regex, replacement);
-	    
-	BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
-	Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(request);
-	List<BlobKey> blobKeys = blobs.get("image");
-	  
-	Message message = new Message(user, textWithImagesReplaced, recipient,"");
-	 
+    String user = userService.getCurrentUser().getEmail();
+    String recipient = request.getParameter("recipient");
+    String userText = Jsoup.clean(request.getParameter("text"), Whitelist.none());
+    //cleaning up user text, searching for any image URLs
+    String regex = "(https?://\\S+\\.(png|jpg))";
+    String replacement = "<img src=\"$1\" />";
+    //replacing images with code that can be displayed on the page 
+    String textWithImagesReplaced = userText.replaceAll(regex, replacement);
+    BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+    Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(request);
+    List<BlobKey> blobKeys = blobs.get("image");
+    Message message = new Message(user, textWithImagesReplaced, recipient,"");
+    
+    if(blobKeys != null && !blobKeys.isEmpty()) {
+      BlobKey blobKey = blobKeys.get(0);
+      ImagesService imagesService = ImagesServiceFactory.getImagesService();
+      ServingUrlOptions options = ServingUrlOptions.Builder.withBlobKey(blobKey);
+      try {
+        String imageUrl = imagesService.getServingUrl(options);
+        message.setImageUrl(imageUrl);
+      } 
+      catch (ImagesServiceFailureException imageUrlc) {
+    	  
+      }
+    }
 
-	if(blobKeys != null && !blobKeys.isEmpty()) {
-	  BlobKey blobKey = blobKeys.get(0);
-	  ImagesService imagesService = ImagesServiceFactory.getImagesService();
-	  ServingUrlOptions options = ServingUrlOptions.Builder.withBlobKey(blobKey);
-	  try {
-	    String imageUrl = imagesService.getServingUrl(options);
-	    message.setImageUrl(imageUrl);
-	  } 
-	  catch (ImagesServiceFailureException imageUrlc) {
-
-	  }
-	}
-
-	datastore.storeMessage(message);
-	response.sendRedirect("/user-page.html?user=" + user);
-	}
+    datastore.storeMessage(message);
+    response.sendRedirect("/user-page.html?user=" + user);
+    }
 }
 
