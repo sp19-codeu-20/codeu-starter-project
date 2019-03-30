@@ -61,15 +61,15 @@ public class Message {
     return timestamp;
   }
 
-  public String getRecipient(){
+  public String getRecipient() {
     return recipient;
   }
   
-  public String getImageUrl(){
-	    return imageUrl;
-	  }
+  public String getImageUrl() {
+	return imageUrl;
+  }
   
   public void setImageUrl(String url){
-	    this.imageUrl = url;
-	  }
+	this.imageUrl = url;
+  }
 }
