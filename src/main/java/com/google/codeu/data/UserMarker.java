@@ -6,6 +6,9 @@ public class UserMarker {
   private double lng;
   private String content;
 
+  /**
+   * Creates UserMarker to keep track of all user info.
+   */
   public UserMarker(double lat, double lng, String content) {
     this.lat = lat;
     this.lng = lng;
