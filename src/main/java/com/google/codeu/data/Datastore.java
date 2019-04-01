@@ -136,8 +136,8 @@ public class Datastore {
    return user;
   }
 
-  /* 
-   * returns the list of user markers
+  /** 
+   * Returns the list of user markers.
    */
   public List<UserMarker> getMarkers() {
     List<UserMarker> markers = new ArrayList<>();
@@ -146,24 +146,24 @@ public class Datastore {
     PreparedQuery results = datastore.prepare(query);
 
     for (Entity entity : results.asIterable()) {
-     try {
-      double lat = (double) entity.getProperty("lat");
-      double lng = (double) entity.getProperty("lng");    
-      String content = (String) entity.getProperty("content");
+      try {
+        double lat = (double) entity.getProperty("lat");
+        double lng = (double) entity.getProperty("lng");    
+        String content = (String) entity.getProperty("content");
 
-      UserMarker marker = new UserMarker(lat, lng, content);
-      markers.add(marker);
-     } catch (Exception e) {
-      System.err.println("Error reading marker.");
-      System.err.println(entity.toString());
-      e.printStackTrace();
-     }
+        UserMarker marker = new UserMarker(lat, lng, content);
+        markers.add(marker);
+      } catch (Exception e) {
+        System.err.println("Error reading marker.");
+        System.err.println(entity.toString());
+        e.printStackTrace();
+      }
     }
     return markers;
   }
 
-  /*
-   * stores user marker in datastore
+  /**
+   * Stores user marker in datastore.
    */
   public void storeMarker(UserMarker marker) {
     Entity markerEntity = new Entity("UserMarker");
