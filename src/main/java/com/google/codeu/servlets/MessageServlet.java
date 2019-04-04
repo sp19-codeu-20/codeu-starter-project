@@ -161,7 +161,7 @@ public class MessageServlet extends HttpServlet {
 
     Feature feature = Feature.newBuilder().setType(Type.LABEL_DETECTION).build();
     AnnotateImageRequest request =
-      AnnotateImageRequest.newBuilder().addFeatures(feature).setImage(image).build();
+        AnnotateImageRequest.newBuilder().addFeatures(feature).setImage(image).build();
     List<AnnotateImageRequest> requests = new ArrayList<>();
     requests.add(request);
 
@@ -172,8 +172,8 @@ public class MessageServlet extends HttpServlet {
     AnnotateImageResponse imageResponse = imageResponses.get(0);
 
     if (imageResponse.hasError()) {
-       System.err.println("Error getting image labels: " + imageResponse.getError().getMessage());
-       return null;
+      System.err.println("Error getting image labels: " + imageResponse.getError().getMessage());
+      return null;
     }
 
     String labelsString = imageResponse.getLabelAnnotationsList().stream()
