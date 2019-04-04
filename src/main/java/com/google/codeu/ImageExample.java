@@ -17,7 +17,7 @@ import java.util.List;
 public class ImageExample {
 
   public static void main(String[] args) throws IOException {
-    String filePath = "../Downloads/IMG_1026.jpg";
+    String filePath = "/Users/joshuaverdejo/Downloads/IMG_1026.jpg";
     ByteString imageBytes = ByteString.readFrom(new FileInputStream(filePath));
     Image image = Image.newBuilder().setContent(imageBytes).build();
 
