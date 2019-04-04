@@ -56,11 +56,17 @@ public class Datastore {
    */
   public List<Message> getMessages(String recipient) {
     List<Message> messages = new ArrayList<>();
-
-    Query query =
-        new Query("Message")
-            .setFilter(new Query.FilterPredicate("recipient", FilterOperator.EQUAL, recipient))
-            .addSort("timestamp", SortDirection.DESCENDING);
+    Query query;
+    if (recipient != null) {
+      query =
+              new Query("Message")
+                      .setFilter(new Query.FilterPredicate("recipient", FilterOperator.EQUAL, recipient))
+                      .addSort("timestamp", SortDirection.DESCENDING);
+    } else {
+      query =
+              new Query("Message")
+                      .addSort("timestamp", SortDirection.DESCENDING);
+    }
     PreparedQuery results = datastore.prepare(query);
 
     for (Entity entity : results.asIterable()) {
