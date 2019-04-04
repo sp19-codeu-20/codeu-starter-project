@@ -35,7 +35,7 @@ public class Message {
    */
   public Message(String user, String text, String recipient, String imageUrl, String imageLabels) {
     this(UUID.randomUUID(), user, text, System.currentTimeMillis(), 
-      recipient, imageUrl, imageLabels);
+        recipient, imageUrl, imageLabels);
   }
   
   /**

@@ -19,9 +19,9 @@ import java.util.List;
  *Diagnostic tool to check if ML analysis is working.
  */
 public class ImageExample {
-/**
-* Reads image, assigns labels to it.
-*/
+  /**
+  * Reads image, assigns labels to it.
+  */
   public static void main(String[] args) throws IOException {
     String filePath = "/path/to/file.jpg";
     ByteString imageBytes = ByteString.readFrom(new FileInputStream(filePath));

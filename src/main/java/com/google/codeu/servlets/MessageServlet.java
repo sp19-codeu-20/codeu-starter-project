@@ -161,26 +161,26 @@ public class MessageServlet extends HttpServlet {
 
     Feature feature = Feature.newBuilder().setType(Type.LABEL_DETECTION).build();
     AnnotateImageRequest request =
-	  AnnotateImageRequest.newBuilder().addFeatures(feature).setImage(image).build();
-	List<AnnotateImageRequest> requests = new ArrayList<>();
-	requests.add(request);
+      AnnotateImageRequest.newBuilder().addFeatures(feature).setImage(image).build();
+    List<AnnotateImageRequest> requests = new ArrayList<>();
+    requests.add(request);
 
-	ImageAnnotatorClient client = ImageAnnotatorClient.create();
-	BatchAnnotateImagesResponse batchResponse = client.batchAnnotateImages(requests);
-	client.close();
-	List<AnnotateImageResponse> imageResponses = batchResponse.getResponsesList();
-	AnnotateImageResponse imageResponse = imageResponses.get(0);
+    ImageAnnotatorClient client = ImageAnnotatorClient.create();
+    BatchAnnotateImagesResponse batchResponse = client.batchAnnotateImages(requests);
+    client.close();
+    List<AnnotateImageResponse> imageResponses = batchResponse.getResponsesList();
+    AnnotateImageResponse imageResponse = imageResponses.get(0);
 
-	if (imageResponse.hasError()) {
-      System.err.println("Error getting image labels: " + imageResponse.getError().getMessage());
-      return null;
-	}
+    if (imageResponse.hasError()) {
+       System.err.println("Error getting image labels: " + imageResponse.getError().getMessage());
+       return null;
+    }
 
-	String labelsString = imageResponse.getLabelAnnotationsList().stream()
-			.map(EntityAnnotation::getDescription)
-			.collect(Collectors.joining(", "));
+    String labelsString = imageResponse.getLabelAnnotationsList().stream()
+            .map(EntityAnnotation::getDescription)
+            .collect(Collectors.joining(", "));
 
-	return labelsString;
+    return labelsString;
   }
 }
 
