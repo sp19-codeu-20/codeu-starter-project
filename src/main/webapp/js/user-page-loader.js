@@ -39,14 +39,39 @@ function showMessageFormIfLoggedIn() {
       })
       .then((loginStatus) => {
         if (loginStatus.isLoggedIn) {
-          if (loginStatus.username == parameterUsername){
-            const aboutMeElement = document.getElementById('about-me-form');
-            aboutMeElement.classList.remove('hidden');
-          }
-          const messageForm = document.getElementById('message-form');
-          messageForm.action = '/messages?recipient=' + parameterUsername;
-          messageForm.classList.remove('hidden');
+        fetchImageUploadUrlAndShowForm();
         }
+      });
+}
+
+/**
+ * Shows the message form if the user is logged in and viewing their own page.
+ */
+function showMessageFormIfViewingSelf() {
+  fetch('/login-status')
+      .then((response) => {
+        return response.json();
+      })
+      .then((loginStatus) => {
+        if (loginStatus.isLoggedIn &&
+            loginStatus.username == parameterUsername) {
+          const aboutMeElement = document.getElementById('about-me-form');
+          aboutMeElement.classList.remove('hidden');
+          fetchImageUploadUrlAndShowForm();
+        }
+      });
+}
+
+function fetchImageUploadUrlAndShowForm() {
+  fetch('/image-upload-url')
+      .then((response) => {
+        return response.text();
+      })
+      .then((imageUploadUrl) => {
+        const messageForm = document.getElementById('message-form');
+        messageForm.action = imageUploadUrl;
+        messageForm.classList.remove('hidden');
+        document.getElementById('recipientInput').value = parameterUsername;
       });
 }
 
@@ -91,6 +116,10 @@ function buildMessageDiv(message) {
   messageDiv.appendChild(headerDiv);
   messageDiv.appendChild(bodyDiv);
 
+  if(message.imageUrl){
+	  bodyDiv.innerHTML += '<br/>';
+	  bodyDiv.innerHTML += '<img src="' + message.imageUrl + '" />';
+	}
   return messageDiv;
 }
 
@@ -114,5 +143,6 @@ function buildUI() {
   setPageTitle();
   fetchAboutMe();
   showMessageFormIfLoggedIn();
+  showMessageFormIfViewingSelf();
   fetchMessages();
 }

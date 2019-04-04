@@ -1,5 +1,8 @@
 linters:
-  csslint: {  }
+  csslint:
+    ignore: 'bulletproof-font-face'
+  checkstyle:
+    config: ./checkstyle.xml
 files:
   ignore:
     - 'bower_components/*'

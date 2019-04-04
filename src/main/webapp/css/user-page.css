@@ -14,38 +14,92 @@
  * limitations under the License.
  */
 
-/* Set the size of the message input to be 100 pixels high
-   and will fill the width of its parent element. */
-#message-input {
-  height: 100px;
+
+.about-me-container {
+  background: white;
+  text-align: center;
   width: 100%;
 }
 
-/* Give each message a rounded border. */
-.message-div {
-  border: thin solid black;
-  border-radius: 5px;
-  margin-top: 20px;
+.about-me-input {
+  border: none;
+  height: 110px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+  width: 99.4%;
 }
 
-/* Keep images on screen, in display box. */
-.message-body img {
+/* For submit Buttons */
+.block {
+  background-color: white;
+  cursor: pointer;
   display: block;
-  margin-top: 25px;
-  max-width: 75%;
+  font-family: 'Product Sans';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  text-align: center;
+  width: 100%;
 }
 
-/* Add a bottom border to the message header. */
-.message-header {
-  border-bottom: thin solid black;
-  padding: 5px;
+.block:hover {
+  background-color: #ddd;
+  color: white;
+  font-family: 'Product Sans';
+  font-style: normal;
+  font-weight: 400;
+}
+
+.message-form {
+	background: white;
+	border: none;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+	margin-top: 20px;
+	min-width: 160px;
+	text-align: center;
+	z-index: 1; 
 }
 
 /* Give the message body a margin so the text
    isn't too close to the border. */
 .message-body {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  color: black;
   margin: 5px;
+  min-width: 160px;
+  z-index: 1;
+
 }
+
+/* Keep images on screen, in display box. */
+.message-body img {
+  border-radius: 5px;
+  display: block;
+  margin-top: 25px;
+  width: 90%;
+}
+
+/* Give each message a rounded border. */
+.message-div {
+  background: white;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+
+/* Add a bottom border to the message header. */
+.message-header {
+  padding: 5px;
+}
+
+/* Set the size of the message input to be 100 pixels high
+   and will fill the width of its parent element. */
+.message-input {
+  border: none;
+  height: 100px;
+  width: 99.4%;
+}
+
 
 /* Use this to hide certain elements like forms if the
    user is not logged in or viewing their own page. */
