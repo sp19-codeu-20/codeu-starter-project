@@ -130,57 +130,57 @@ public class MessageServlet extends HttpServlet {
   }
   
   private byte[] getBlobBytes(BlobstoreService blobstoreService, BlobKey blobKey)
-		    throws IOException {
+    throws IOException {
 
-		  ByteArrayOutputStream outputBytes = new ByteArrayOutputStream();
+	  ByteArrayOutputStream outputBytes = new ByteArrayOutputStream();
 
-		  int fetchSize = BlobstoreService.MAX_BLOB_FETCH_SIZE;
+	  int fetchSize = BlobstoreService.MAX_BLOB_FETCH_SIZE;
 
-		  long currentByteIndex = 0;
-		  boolean continueReading = true;
-		  while (continueReading) {
-		    // end index is inclusive, so we have to subtract 1 to get fetchSize bytes
-		    byte[] b =
-		        blobstoreService.fetchData(blobKey, currentByteIndex, currentByteIndex + fetchSize - 1);
-		    outputBytes.write(b);
+	  long currentByteIndex = 0;
+	  boolean continueReading = true;
+	  while (continueReading) {
+		  // end index is inclusive, so we have to subtract 1 to get fetchSize bytes
+		  byte[] b =
+				  blobstoreService.fetchData(blobKey, currentByteIndex, currentByteIndex + fetchSize - 1);
+		  outputBytes.write(b);
 
-		    // if we read fewer bytes than we requested, then we reached the end
-		    if (b.length < fetchSize) {
-		      continueReading = false;
-		    }
-
-		    currentByteIndex += fetchSize;
+		  // if we read fewer bytes than we requested, then we reached the end
+		  if (b.length < fetchSize) {
+			  continueReading = false;
 		  }
 
-		  return outputBytes.toByteArray();
-		}
-  
-  private String getImageLabels(byte[] imgBytes) throws IOException {
-	  ByteString byteString = ByteString.copyFrom(imgBytes);
-	  Image image = Image.newBuilder().setContent(byteString).build();
-
-	  Feature feature = Feature.newBuilder().setType(Type.LABEL_DETECTION).build();
-	  AnnotateImageRequest request =
-	      AnnotateImageRequest.newBuilder().addFeatures(feature).setImage(image).build();
-	  List<AnnotateImageRequest> requests = new ArrayList<>();
-	  requests.add(request);
-
-	  ImageAnnotatorClient client = ImageAnnotatorClient.create();
-	  BatchAnnotateImagesResponse batchResponse = client.batchAnnotateImages(requests);
-	  client.close();
-	  List<AnnotateImageResponse> imageResponses = batchResponse.getResponsesList();
-	  AnnotateImageResponse imageResponse = imageResponses.get(0);
-
-	  if (imageResponse.hasError()) {
-	    System.err.println("Error getting image labels: " + imageResponse.getError().getMessage());
-	    return null;
+		  currentByteIndex += fetchSize;
 	  }
 
-	  String labelsString = imageResponse.getLabelAnnotationsList().stream()
-	      .map(EntityAnnotation::getDescription)
-	      .collect(Collectors.joining(", "));
+	  return outputBytes.toByteArray();
+    }
+  
+  private String getImageLabels(byte[] imgBytes) throws IOException {
+    ByteString byteString = ByteString.copyFrom(imgBytes);
+    Image image = Image.newBuilder().setContent(byteString).build();
 
-	  return labelsString;
+    Feature feature = Feature.newBuilder().setType(Type.LABEL_DETECTION).build();
+    AnnotateImageRequest request =
+	  AnnotateImageRequest.newBuilder().addFeatures(feature).setImage(image).build();
+	List<AnnotateImageRequest> requests = new ArrayList<>();
+	requests.add(request);
+
+	ImageAnnotatorClient client = ImageAnnotatorClient.create();
+	BatchAnnotateImagesResponse batchResponse = client.batchAnnotateImages(requests);
+	client.close();
+	List<AnnotateImageResponse> imageResponses = batchResponse.getResponsesList();
+	AnnotateImageResponse imageResponse = imageResponses.get(0);
+
+	if (imageResponse.hasError()) {
+      System.err.println("Error getting image labels: " + imageResponse.getError().getMessage());
+      return null;
 	}
+
+	String labelsString = imageResponse.getLabelAnnotationsList().stream()
+			.map(EntityAnnotation::getDescription)
+			.collect(Collectors.joining(", "));
+
+	return labelsString;
   }
+}
 

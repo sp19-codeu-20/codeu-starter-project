@@ -49,8 +49,8 @@ public class Datastore {
       messageEntity.setProperty("imageUrl", message.getImageUrl());
     }
     if (message.getImageLabels() != null) {
-        messageEntity.setProperty("imageLabels", message.getImageLabels());
-      }
+      messageEntity.setProperty("imageLabels", message.getImageLabels());
+    }
 
     datastore.put(messageEntity);
   }

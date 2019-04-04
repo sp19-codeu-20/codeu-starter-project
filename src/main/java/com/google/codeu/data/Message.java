@@ -34,7 +34,8 @@ public class Message {
    * random ID and uses the current system time for the creation time.
    */
   public Message(String user, String text, String recipient, String imageUrl, String imageLabels) {
-    this(UUID.randomUUID(), user, text, System.currentTimeMillis(), recipient, imageUrl, imageLabels);
+    this(UUID.randomUUID(), user, text, System.currentTimeMillis(), 
+    		recipient, imageUrl, imageLabels);
   }
   
   /**
@@ -84,6 +85,6 @@ public class Message {
   }
 	  
   public void setImageLabels(String label) {
-	this.imageLabels= label;
+    this.imageLabels = label;
   }
 }

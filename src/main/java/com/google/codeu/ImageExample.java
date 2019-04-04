@@ -6,6 +6,7 @@ import com.google.cloud.vision.v1.BatchAnnotateImagesResponse;
 import com.google.cloud.vision.v1.EntityAnnotation;
 import com.google.cloud.vision.v1.Feature;
 import com.google.cloud.vision.v1.Feature.Type;
+import com.google.codeu.data.Message;
 import com.google.cloud.vision.v1.Image;
 import com.google.cloud.vision.v1.ImageAnnotatorClient;
 import com.google.protobuf.ByteString;
@@ -14,10 +15,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Diagnostic tool to check if ML analysis is working
+ */
 public class ImageExample {
 
   public static void main(String[] args) throws IOException {
-    String filePath = "/Users/joshuaverdejo/Downloads/IMG_1026.jpg";
+    String filePath = "/path/to/file.jpg";
     ByteString imageBytes = ByteString.readFrom(new FileInputStream(filePath));
     Image image = Image.newBuilder().setContent(imageBytes).build();
 
