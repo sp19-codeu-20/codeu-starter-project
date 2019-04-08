@@ -1,6 +1,9 @@
 package com.google.codeu.servlets;
 
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 import com.google.codeu.data.Datastore;
+import com.google.codeu.data.Message;
 import com.google.codeu.data.UserMarker;
 import com.google.gson.Gson;
 
@@ -42,13 +45,31 @@ public class UserMarkerServlet extends HttpServlet {
   }
 
   @Override
-  public void doPost(HttpServletRequest request, HttpServletResponse response) {
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+    UserService userService = UserServiceFactory.getUserService();
+    if (!userService.isUserLoggedIn()) {
+      response.sendRedirect("/index.html");
+      return;
+    }
+
+    String user = userService.getCurrentUser().getEmail();
+    String recipient = request.getParameter("recipient");
 
     double lat = Double.parseDouble(request.getParameter("lat"));
     double lng = Double.parseDouble(request.getParameter("lng"));
     String content = Jsoup.clean(request.getParameter("content"), Whitelist.none());
 
+    Message message = new Message(user, content, recipient, "", "");
+    datastore.storeMessage(message);
+
+    System.out.print(message);
+
+    System.out.print(datastore.getMessages(recipient));
+
     UserMarker marker = new UserMarker(lat, lng, content);
     datastore.storeMarker(marker);
+
+    response.sendRedirect("/user-page.html?user=" + user);
   }
 }
