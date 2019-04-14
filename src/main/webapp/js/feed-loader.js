@@ -40,7 +40,17 @@
    messageDiv.classList.add("message-div");
    messageDiv.appendChild(headerDiv);
    messageDiv.appendChild(bodyDiv);
+   
+   if(message.imageUrl){
+     bodyDiv.innerHTML += '<br/>';
+     bodyDiv.innerHTML += '<img src="' + message.imageUrl + '" />';
+    }
 
+   if(message.imageLabels){
+     bodyDiv.innerHTML += '<br/>';
+     bodyDiv.innerHTML += message.imageLabels;
+	}
+	
    return messageDiv;
   }
 
