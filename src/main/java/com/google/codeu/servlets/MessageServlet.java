@@ -114,12 +114,12 @@ public class MessageServlet extends HttpServlet {
       BlobKey blobKey = blobKeys.get(0);
       ImagesService imagesService = ImagesServiceFactory.getImagesService();
       ServingUrlOptions options = ServingUrlOptions.Builder.withBlobKey(blobKey);
-      byte[] blobBytes = getBlobBytes(blobstoreService, blobKey);
-      String imageLabels = getImageLabels(blobBytes);
-      message.setImageLabels(imageLabels);
       try {
         String imageUrl = imagesService.getServingUrl(options);
         message.setImageUrl(imageUrl);
+        byte[] blobBytes = getBlobBytes(blobstoreService, blobKey);
+        String imageLabels = getImageLabels(blobBytes);
+        message.setImageLabels(imageLabels);
       } catch (ImagesServiceFailureException imageUrlc) {
         ;  
       }
