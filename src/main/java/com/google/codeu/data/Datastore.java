@@ -105,7 +105,7 @@ public class Datastore {
         double lng = (double) entity.getProperty("lng");
         Boolean hasLocation = (Boolean) entity.getProperty("hasLocation");
         Message message = new Message(id, user, text, timestamp, recipient, 
-          imageUrl, imageLabels, lat, lng, hasLocation);
+              imageUrl, imageLabels, lat, lng, hasLocation);
         messages.add(message);
       } catch (Exception e) {
         System.err.println("Error reading message.");
