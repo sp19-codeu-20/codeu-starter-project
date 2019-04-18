@@ -40,7 +40,6 @@
   font-weight: 400;
   text-align: center;
   width: 100%;
-  margin-bottom: 20px;
 }
 
 .block:hover {
@@ -49,7 +48,6 @@
   font-family: 'Product Sans';
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
 }
 
 .message-form {
