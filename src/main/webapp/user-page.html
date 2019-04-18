@@ -45,8 +45,8 @@ limitations under the License.
     <h1 id="page-title">User Page</h1>
     <div id="about-me-container" class="about-me-container" >Loading...</div>
     <div id="about-me-form" class="hidden">
-      <form action="/about" method="POST">
-        <textarea class= "about-me-input" name="about-me" placeholder="Say something about yourself..." rows=4 required></textarea>
+      <form class= action="/about" method="POST">
+        <textarea class="about-me-input" name="about-me" placeholder="Say something about yourself..." rows=4 required></textarea>
         <br/>
         <input type="submit" value="Submit" class = "block">
       </form>
@@ -60,9 +60,8 @@ limitations under the License.
       <textarea name="text" class="message-input" id="message-input" placeholder="Say something to the world..."></textarea>
       <br/>
         Add an image to your message:
-	  <input type="file" name="image" class = "block">
-	  <br/>
-	  <input type="hidden" value="" name="recipient" id="recipientInput">
+	    <input type="file" name="image" class = "block">
+	    <input type="hidden" value="" name="recipient" id="recipientInput">
       <input type="submit" value="Submit" class = "block">
     </form>
     <hr/>
