@@ -21,9 +21,23 @@ limitations under the License.
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/user-page.css">
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDipc0Fcrm1Zt2d1Ig7xDylFNgpxiqF3s"></script>
+
     <script src="/js/user-page-loader.js"></script>
+
+    <!-- renders map and adds marker wherever clicked -->
+    <script src="/js/user-map-loader.js"></script>
+
+    <style>
+    #map{
+      width: 500px;
+      height: 500px;
+      align-self: center;
+    }
+    </style>
   </head>
-  <body onload="buildUI();">
+  <body onload="buildUI(); createMap();">
     <nav>
     <div class="dropdown"style="float:right;">
       <button class="dropbtn">Menu</button>
@@ -37,13 +51,15 @@ limitations under the License.
     
     <h1 id="page-title">User Page</h1>
     <div id="about-me-container" class="about-me-container" >Loading...</div>
-  <div id="about-me-form" class="hidden">
-  <form action="/about" method="POST">
-    <textarea class= "about-me-input" name="about-me" placeholder="Say something about yourself..." rows=4 required></textarea>
-    <br/>
-    <input type="submit" value="Submit" class = "block">
-  </form>
-</div>
+    <div id="about-me-form" class="hidden">
+      <form action="/about" method="POST">
+        <textarea class= "about-me-input" name="about-me" placeholder="Say something about yourself..." rows=4 required></textarea>
+        <br/>
+        <input type="submit" value="Submit" class = "block">
+      </form>
+    </div>
+
+    <div id="map"></div>
 
     <form class="message-form" id="message-form" action="/messages" method="POST" class="hidden" enctype="multipart/form-data">
       Enter a new message:

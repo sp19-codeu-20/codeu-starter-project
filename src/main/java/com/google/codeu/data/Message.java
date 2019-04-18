@@ -28,21 +28,32 @@ public class Message {
   private String recipient;
   private String imageUrl;
   private String imageLabels;
+  private double lat;
+  private double lng;
+  private Boolean hasLocation;
+
+
+  public Message(String user, String text, String recipient, String imageUrl, 
+        String imageLabels) {
+    this(UUID.randomUUID(), user, text, System.currentTimeMillis(), 
+        recipient, imageUrl, imageLabels, 0, 0, false);
+  }
 
   /**
    * Constructs a new {@link Message} posted by {@code user} with {@code text} content. Generates a
    * random ID and uses the current system time for the creation time.
    */
-  public Message(String user, String text, String recipient, String imageUrl, String imageLabels) {
+  public Message(String user, String text, String recipient, double lat, double lng) {
     this(UUID.randomUUID(), user, text, System.currentTimeMillis(), 
-        recipient, imageUrl, imageLabels);
+        recipient, "", "", lat, lng, true);
   }
   
   /**
    * Message Parameters.
    */
   public Message(UUID id, String user, String text, 
-      long timestamp, String recipient, String imageUrl, String imageLabels) {
+      long timestamp, String recipient, String imageUrl, 
+      String imageLabels, double lat, double lng, boolean hasLocation) {
     this.id = id;
     this.user = user;
     this.text = text;
@@ -50,6 +61,9 @@ public class Message {
     this.imageUrl = imageUrl;
     this.recipient = recipient;
     this.imageLabels = imageLabels;
+    this.lat = lat;
+    this.lng = lng;
+    this.hasLocation = hasLocation;
   }
 
   public UUID getId() {
@@ -74,6 +88,18 @@ public class Message {
   
   public String getImageUrl() {
     return imageUrl;
+  }
+
+  public double getLat() {
+    return lat;
+  }
+
+  public double getLng() {
+    return lng;
+  }
+
+  public boolean getHasLocation() {
+    return hasLocation;
   }
   
   public void setImageUrl(String url) {
