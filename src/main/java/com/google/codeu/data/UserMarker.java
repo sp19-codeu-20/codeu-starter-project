@@ -5,7 +5,7 @@ public class UserMarker {
   private double lat;
   private double lng;
   private String content;
-
+ 
   /**
    * Creates UserMarker to keep track of all user info.
    */

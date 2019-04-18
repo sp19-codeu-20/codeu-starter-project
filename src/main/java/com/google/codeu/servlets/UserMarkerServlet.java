@@ -37,7 +37,15 @@ public class UserMarkerServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("application/json");
 
-    List<UserMarker> markers = datastore.getMarkers();
+    UserService userService = UserServiceFactory.getUserService();
+    if (!userService.isUserLoggedIn()) {
+      response.sendRedirect("/index.html");
+      return;
+    }
+
+    String user = userService.getCurrentUser().getEmail();
+
+    List<UserMarker> markers = datastore.getMarkers(user);
     Gson gson = new Gson();
     String json = gson.toJson(markers);
 
@@ -54,21 +62,16 @@ public class UserMarkerServlet extends HttpServlet {
     }
 
     String user = userService.getCurrentUser().getEmail();
-    String recipient = request.getParameter("recipient");
 
     double lat = Double.parseDouble(request.getParameter("lat"));
     double lng = Double.parseDouble(request.getParameter("lng"));
     String content = Jsoup.clean(request.getParameter("content"), Whitelist.none());
 
-    Message message = new Message(user, content, recipient, "", "");
+    Message message = new Message(user, content, user, lat, lng);
     datastore.storeMessage(message);
 
-    System.out.print(message);
-
-    System.out.print(datastore.getMessages(recipient));
-
-    UserMarker marker = new UserMarker(lat, lng, content);
-    datastore.storeMarker(marker);
+    //UserMarker marker = new UserMarker(lat, lng, content);
+    //datastore.storeMarker(marker);
 
     response.sendRedirect("/user-page.html?user=" + user);
   }

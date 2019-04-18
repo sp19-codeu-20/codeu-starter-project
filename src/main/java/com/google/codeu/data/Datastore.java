@@ -51,6 +51,9 @@ public class Datastore {
     if (message.getImageLabels() != null) {
       messageEntity.setProperty("imageLabels", message.getImageLabels());
     }
+    messageEntity.setProperty("lat", message.getLat());
+    messageEntity.setProperty("lng", message.getLng());
+    messageEntity.setProperty("hasLocation", message.getHasLocation());
 
     datastore.put(messageEntity);
   }
@@ -98,7 +101,11 @@ public class Datastore {
         String recipient = (String) entity.getProperty("recipient");
         String imageUrl = (String) entity.getProperty("imageUrl");
         String imageLabels = (String) entity.getProperty("imageLabels");
-        Message message = new Message(id, user, text, timestamp, recipient, imageUrl,imageLabels);
+        double lat = (double) entity.getProperty("lat");
+        double lng = (double) entity.getProperty("lng");
+        Boolean hasLocation = (Boolean) entity.getProperty("hasLocation");
+        Message message = new Message(id, user, text, timestamp, recipient, 
+          imageUrl, imageLabels, lat, lng, hasLocation);
         messages.add(message);
       } catch (Exception e) {
         System.err.println("Error reading message.");
@@ -147,17 +154,20 @@ public class Datastore {
   /** 
    * Returns the list of user markers.
    */
-  public List<UserMarker> getMarkers() {
+  public List<UserMarker> getMarkers(String recipient) {
     List<UserMarker> markers = new ArrayList<>();
 
-    Query query = new Query("UserMarker");
+    Query query =
+        new Query("Message")
+            .setFilter(new Query.FilterPredicate("recipient", FilterOperator.EQUAL, recipient))
+            .setFilter(new Query.FilterPredicate("hasLocation", FilterOperator.EQUAL, true));
     PreparedQuery results = datastore.prepare(query);
 
     for (Entity entity : results.asIterable()) {
       try {
         double lat = (double) entity.getProperty("lat");
         double lng = (double) entity.getProperty("lng");    
-        String content = (String) entity.getProperty("content");
+        String content = (String) entity.getProperty("text");
 
         UserMarker marker = new UserMarker(lat, lng, content);
         markers.add(marker);
