@@ -108,7 +108,7 @@ public class MessageServlet extends HttpServlet {
     BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
     Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(request);
     List<BlobKey> blobKeys = blobs.get("image");
-    Message message = new Message(user, textWithImagesReplaced, recipient,"","");
+    Message message = new Message(user, textWithImagesReplaced, recipient, "", "");
     
     if (blobKeys != null && !blobKeys.isEmpty()) {
       BlobKey blobKey = blobKeys.get(0);

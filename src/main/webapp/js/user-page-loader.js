@@ -152,3 +152,17 @@ function buildUI() {
   showMessageFormIfViewingSelf();
   fetchMessages();
 }
+
+
+ function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        document.getElementById.value = "Geolocation is not supported by this browser.";
+    }
+  }
+
+function showPosition(position) {
+   document.getElementById('loc').value = "Latitude: " + position.coords.latitude +
+  "Longitude: " + position.coords.longitude;
+}
