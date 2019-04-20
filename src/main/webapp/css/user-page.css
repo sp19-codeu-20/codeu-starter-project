@@ -32,6 +32,7 @@
 /* For submit Buttons */
 .block {
   background-color: white;
+  border:none;
   cursor: pointer;
   display: block;
   font-family: 'Product Sans';

@@ -6,8 +6,11 @@ function fetchStats(){
     }).then((stats) => {
         const statsContainer = document.getElementById('stats-container');
         statsContainer.innerHTML = '';
+        const userCountElement = buildStatElement('Active User count: ' + stats.userCount);
+        statsContainer.appendChild(userCountElement);
         const messageCountElement = buildStatElement('Message count: ' + stats.messageCount);
         statsContainer.appendChild(messageCountElement);
+        
     });
 }
 
