@@ -23,7 +23,7 @@
 
 .about-me-input {
   border: none;
-  height: 110px;
+  height: 60px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   z-index: 1;
   width: 99.4%;
@@ -106,4 +106,11 @@
    user is not logged in or viewing their own page. */
 .hidden {
   display: none;
+}
+
+.map {
+  align-self: center;
+  height: 400px;
+  margin-top: 20px;
+  width: 100%;  
 }
