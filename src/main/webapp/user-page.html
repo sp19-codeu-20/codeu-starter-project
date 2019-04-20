@@ -29,13 +29,6 @@ limitations under the License.
     <!-- renders map and adds marker wherever clicked -->
     <script src="/js/user-map-loader.js"></script>
 
-    <style>
-    #map{
-      width: 500px;
-      height: 500px;
-      align-self: center;
-    }
-    </style>
   </head>
   <body onload="buildUI(); createMap();">
     <nav>
@@ -55,13 +48,13 @@ limitations under the License.
     <div id="about-me-container" class="about-me-container" >Loading...</div>
     <div id="about-me-form" class="hidden">
       <form action="/about" method="POST">
-        <textarea class= "about-me-input" name="about-me" placeholder="Say something about yourself..." rows=4 required></textarea>
+        <textarea class="about-me-input" name="about-me" placeholder="Say something about yourself..." rows=4 required></textarea>
         <br/>
         <input type="submit" value="Submit" class = "block">
       </form>
     </div>
 
-    <div id="map"></div>
+    <div id="map" class="map"></div>
 
     <form class="message-form" id="message-form" action="/messages" method="POST" class="hidden" enctype="multipart/form-data">
       Enter a new message:
@@ -69,12 +62,12 @@ limitations under the License.
       <textarea name="text" class="message-input" id="message-input" placeholder="Say something to the world..."></textarea>
       <br/>
         Add an image to your message:
+
 	  <input type="file" name="image" class = "block">
 	  <br/>
 	  <input type="hidden" value="" name="recipient" id="recipientInput">
       <textarea name="loc" id="loc" value="Enter Latitude and Longitude here" placeholder="Latitude: Longitude: "></textarea>
       <button onclick="getLocation()">Add Current Location</button>
-
 
       <input type="submit" value="Submit" class = "block">
     </form>
