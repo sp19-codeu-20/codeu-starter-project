@@ -37,6 +37,8 @@ limitations under the License.
       <div class="dropdown-content">
       <ul id="navigation">
         <li><a href="/">Home</a></li>
+        <li><a href="/feed.html">Feed</a></li>
+        <li><a href="/stats.html">Stats</a></li>
       </ul>
       </div>
     </div>
@@ -60,8 +62,13 @@ limitations under the License.
       <textarea name="text" class="message-input" id="message-input" placeholder="Say something to the world..."></textarea>
       <br/>
         Add an image to your message:
-	    <input type="file" name="image" class = "block">
-	    <input type="hidden" value="" name="recipient" id="recipientInput">
+
+	  <input type="file" name="image" class = "block">
+	  <br/>
+	  <input type="hidden" value="" name="recipient" id="recipientInput">
+      <textarea name="loc" id="loc" value="Enter Latitude and Longitude here" placeholder="Latitude: Longitude: "></textarea>
+      <button onclick="getLocation()">Add Current Location</button>
+
       <input type="submit" value="Submit" class = "block">
     </form>
     <hr/>
