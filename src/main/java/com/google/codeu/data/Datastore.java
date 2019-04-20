@@ -117,7 +117,7 @@ public class Datastore {
   }   
 
   /** Returns the total number of messages for all users. */
-  public int getTotalMessageCount(){
+  public int getTotalMessageCount() {
     Query query = new Query("Message");
     int maxNumberOfResultsPerQuery = 1000;
     PreparedQuery results = datastore.prepare(query);
@@ -125,11 +125,11 @@ public class Datastore {
   }
   
   /** Returns the total number of users for the page. */
-  public int getTotalUserCount(){
-	  Query query = new Query("User");
-	  int maxNumberOfResultsPerQuery = 1000;
-	  PreparedQuery results = datastore.prepare(query);
-	  return results.countEntities(FetchOptions.Builder.withLimit(maxNumberOfResultsPerQuery));
+  public int getTotalUserCount() {
+    Query query = new Query("User");
+    int maxNumberOfResultsPerQuery = 1000;
+    PreparedQuery results = datastore.prepare(query);
+    return results.countEntities(FetchOptions.Builder.withLimit(maxNumberOfResultsPerQuery));
   }
   
   /** Stores the User in Datastore. */
