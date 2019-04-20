@@ -165,4 +165,6 @@ function buildUI() {
 function showPosition(position) {
    document.getElementById('loc').value = "Latitude: " + position.coords.latitude +
   "Longitude: " + position.coords.longitude;
+  message.lat = position.coords.latitude;
+  message.lng  = position.coords.longitude;
 }
